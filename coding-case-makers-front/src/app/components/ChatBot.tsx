@@ -13,8 +13,12 @@ const products = [
   { id: 4, name: 'Hat', price: 14.99, stock: 40 },
 ]
 
+interface ChatbotProps {
+  onClose: () => void
+}
 
-export default function Chatbot() {
+
+export default function Chatbot({ onClose }: ChatbotProps) {
   const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>([
     { text: "Hello! How can I help you with our inventory?", isUser: false }
   ])
@@ -54,7 +58,7 @@ export default function Chatbot() {
     <Card className="fixed bottom-20 right-4 w-80 h-96 flex flex-col">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Store Assistant</CardTitle>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" onClick={onClose}>
           <X className="h-4 w-4" />
         </Button>
       </CardHeader>
