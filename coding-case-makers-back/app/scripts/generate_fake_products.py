@@ -2,6 +2,11 @@ import json
 from faker import Faker
 import random
 
+from sqlalchemy.orm import Session
+
+from app.data.database import get_db
+from app.models.product import Product
+
 fake = Faker()
 
 brands = ["Dell", "HP", "Apple", "Lenovo", "Asus", "Acer", "Microsoft", "Razer"]
@@ -122,8 +127,29 @@ def save_to_json(data, filename):
         json.dump(data, file, indent=4)
 
 
+def save_products_to_db(products, db: Session):
+    for product in products:
+        db_product = Product(
+            id=product['id'],
+            brand=product['brand'],
+            model=product['model'],
+            processor=product['processor'],
+            ram=product['ram'],
+            storage=product['storage'],
+            price=product['price'],
+            description=product['description'],
+            stars=product['stars'],
+            stock=product['stock'],
+            category=product['category']
+        )
+        db.add(db_product)
+    db.commit()
+
+
 if __name__ == "__main__":
     num_computers = 50
     num_phones = 50
     fake_products = generate_fake_computers(num_computers) + generate_fake_phones(num_phones)
     save_to_json(fake_products, 'app/data/products.json')
+    db = next(get_db())
+    save_products_to_db(fake_products, db)
