@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from app.models.computer import Computer
 from app.services.computer_service import ComputerService
@@ -8,9 +8,41 @@ router = APIRouter()
 
 
 @router.get("/computers", response_model=List[Computer])
-async def get_computers(service: ComputerService = Depends(get_computer_service)):
-    """Get a list of all computers."""
-    return service.get_computers()
+async def get_computers(
+        brand: Optional[str] = None,
+        model: Optional[str] = None,
+        processor: Optional[str] = None,
+        storage: Optional[int] = None,
+        ram: Optional[int] = None,
+        stars: Optional[float] = None,
+        stock: Optional[int] = None,
+        min_price: Optional[float] = None,
+        max_price: Optional[float] = None,
+        service: ComputerService = Depends(get_computer_service)
+):
+    """Get a list of all computers, optionally filtered by brand, RAM, stars, stock, and price ranges."""
+    filters = {}
+    if brand:
+        filters['brand'] = brand
+    if model:
+        filters['model'] = model
+    if storage:
+        filters['storage'] = storage
+    if processor:
+        filters['processor'] = processor
+    if ram:
+        filters['ram'] = ram
+    if stars:
+        filters['stars'] = stars
+    if stock:
+        filters['stock'] = stock
+    if min_price is not None:
+        filters['min_price'] = min_price
+    if max_price is not None:
+        filters['max_price'] = max_price
+
+    filtered_computers = service.get_computers_by_attributes(**filters)
+    return filtered_computers
 
 
 @router.get("/computers/{computer_id}", response_model=Computer)

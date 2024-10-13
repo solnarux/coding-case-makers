@@ -26,3 +26,7 @@ class ComputerRepository:
     def get_computer_by_id(self, computer_id: int) -> Optional[Computer]:
         """Retrieve a computer by ID from storage."""
         raise NotImplementedError
+
+    def get_computers_by_attributes(self, attributes) -> List[Computer]:
+        """Retrieve computers filtered by attributes"""
+        raise NotImplementedError

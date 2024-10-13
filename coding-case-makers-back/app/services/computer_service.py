@@ -13,6 +13,9 @@ class ComputerService:
     def get_computer_by_id(self, computer_id: int) -> Optional[Computer]:
         return self.repository.get_computer_by_id(computer_id)
 
+    def get_computers_by_attributes(self, **kwargs) -> List[Computer]:
+        return self.repository.get_computers_by_attributes(**kwargs)
+
     def add_computer(self, computer: Computer) -> None:
         self.repository.add_computer(computer)
 
