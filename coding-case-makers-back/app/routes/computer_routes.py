@@ -1,58 +1,52 @@
-
 from typing import List
-
-from fastapi import APIRouter, HTTPException
-
+from fastapi import APIRouter, Depends, HTTPException
+#from sqlalchemy.orm import Session
 from app.models.computer import Computer
 from app.services.computer_service import ComputerService
+from app.repositories.json_computer_repository import JSONComputerRepository
+# from app.repositories.db_computer_repository import DBComputerRepository
+#from app.database import get_db
 
 router = APIRouter()
 
 
+def get_computer_service() -> ComputerService:
+    repository = JSONComputerRepository()
+    # repository = DBComputerRepository(get_db())
+    return ComputerService(repository)
+
+
 @router.get("/computers", response_model=List[Computer])
-async def get_computers():
+async def get_computers(service: ComputerService = Depends(get_computer_service)):
     """Get a list of all computers."""
-    try:
-        computers = ComputerService.read_computers()
-        return computers
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return service.get_computers()
+
 
 @router.get("/computers/{computer_id}", response_model=Computer)
-async def get_computer(computer_id: int):
+async def get_computer(computer_id: int, service: ComputerService = Depends(get_computer_service)):
     """Get a specific computer by ID."""
-    try:
-        computers = ComputerService.read_computers()
-        for computer in computers:
-            if computer['id'] == computer_id:
-                return computer
+    computer = service.get_computer_by_id(computer_id)
+    if computer is None:
         raise HTTPException(status_code=404, detail="Computer not found")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return computer
 
 @router.post("/computers", response_model=Computer)
-async def add_computer(computer: Computer):
+async def add_computer(computer: Computer, service: ComputerService = Depends(get_computer_service)):
     """Add a new computer."""
-    try:
-        ComputerService.add_computer(computer.dict())
-        return computer
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    service.add_computer(computer)
+    return computer
+
 
 @router.put("/computers/{computer_id}", response_model=Computer)
-async def update_computer(computer_id: int, updated_computer: Computer):
+async def update_computer(computer_id: int, updated_computer: Computer,
+                          service: ComputerService = Depends(get_computer_service)):
     """Update an existing computer."""
-    try:
-        ComputerService.update_computer(computer_id, updated_computer.dict())
-        return updated_computer
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    service.update_computer(computer_id, updated_computer)
+    return updated_computer
+
 
 @router.delete("/computers/{computer_id}")
-async def delete_computer(computer_id: int):
+async def delete_computer(computer_id: int, service: ComputerService = Depends(get_computer_service)):
     """Delete a computer by ID."""
-    try:
-        ComputerService.delete_computer(computer_id)
-        return {"detail": "Computer deleted successfully"}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    service.delete_computer(computer_id)
+    return {"detail": "Computer deleted successfully"}

@@ -6,7 +6,7 @@
         "processor": "Intel Core i3",
         "ram": 8,
         "storage": 1024,
-        "price": 4125,
+        "price": 4125.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 4.0,
         "stock": 63
@@ -18,7 +18,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 32,
         "storage": 256,
-        "price": 5944,
+        "price": 5944.0,
         "description": "High performance laptop with excellent battery life.",
         "stars": 1.5,
         "stock": 54
@@ -30,7 +30,7 @@
         "processor": "Intel Core i7",
         "ram": 64,
         "storage": 2048,
-        "price": 8814,
+        "price": 8814.0,
         "description": "Ideal for professionals and students alike.",
         "stars": 5.0,
         "stock": 58
@@ -42,7 +42,7 @@
         "processor": "Intel Core i3",
         "ram": 8,
         "storage": 2048,
-        "price": 1053,
+        "price": 1053.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 2.5,
         "stock": 51
@@ -54,7 +54,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 16,
         "storage": 256,
-        "price": 1002,
+        "price": 1002.0,
         "description": "Suitable for gaming and multitasking.",
         "stars": 4.5,
         "stock": 33
@@ -66,7 +66,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 32,
         "storage": 256,
-        "price": 9890,
+        "price": 9890.0,
         "description": "Ideal for professionals and students alike.",
         "stars": 3.0,
         "stock": 10
@@ -78,7 +78,7 @@
         "processor": "Intel Core i9",
         "ram": 32,
         "storage": 256,
-        "price": 6661,
+        "price": 6661.0,
         "description": "Quiet operation and reliable performance.",
         "stars": 5.0,
         "stock": 65
@@ -90,7 +90,7 @@
         "processor": "AMD Ryzen 5",
         "ram": 32,
         "storage": 512,
-        "price": 8130,
+        "price": 8130.0,
         "description": "Ideal for professionals and students alike.",
         "stars": 1.0,
         "stock": 65
@@ -102,7 +102,7 @@
         "processor": "AMD Ryzen 7",
         "ram": 8,
         "storage": 512,
-        "price": 1755,
+        "price": 1755.0,
         "description": "Quiet operation and reliable performance.",
         "stars": 3.0,
         "stock": 57
@@ -114,7 +114,7 @@
         "processor": "Intel Core i3",
         "ram": 32,
         "storage": 256,
-        "price": 7782,
+        "price": 7782.0,
         "description": "Quiet operation and reliable performance.",
         "stars": 1.0,
         "stock": 3
@@ -126,7 +126,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 64,
         "storage": 256,
-        "price": 2680,
+        "price": 2680.0,
         "description": "High performance laptop with excellent battery life.",
         "stars": 2.5,
         "stock": 46
@@ -138,7 +138,7 @@
         "processor": "Intel Core i5",
         "ram": 16,
         "storage": 512,
-        "price": 7914,
+        "price": 7914.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 3.0,
         "stock": 59
@@ -150,7 +150,7 @@
         "processor": "Intel Core i3",
         "ram": 16,
         "storage": 2048,
-        "price": 3752,
+        "price": 3752.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 4.0,
         "stock": 6
@@ -162,7 +162,7 @@
         "processor": "Intel Core i3",
         "ram": 8,
         "storage": 256,
-        "price": 4727,
+        "price": 4727.0,
         "description": "Suitable for gaming and multitasking.",
         "stars": 5.0,
         "stock": 71
@@ -174,7 +174,7 @@
         "processor": "Intel Core i5",
         "ram": 8,
         "storage": 256,
-        "price": 1079,
+        "price": 1079.0,
         "description": "Ideal for professionals and students alike.",
         "stars": 4.5,
         "stock": 28
@@ -186,7 +186,7 @@
         "processor": "AMD Ryzen 5",
         "ram": 8,
         "storage": 1024,
-        "price": 8738,
+        "price": 8738.0,
         "description": "High performance laptop with excellent battery life.",
         "stars": 3.5,
         "stock": 71
@@ -198,7 +198,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 64,
         "storage": 256,
-        "price": 6768,
+        "price": 6768.0,
         "description": "Lightweight design perfect for travel.",
         "stars": 2.0,
         "stock": 56
@@ -210,7 +210,7 @@
         "processor": "Intel Core i5",
         "ram": 64,
         "storage": 2048,
-        "price": 1960,
+        "price": 1960.0,
         "description": "Ideal for professionals and students alike.",
         "stars": 3.0,
         "stock": 15
@@ -222,7 +222,7 @@
         "processor": "Intel Core i5",
         "ram": 64,
         "storage": 2048,
-        "price": 7203,
+        "price": 7203.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 5.0,
         "stock": 38
@@ -234,7 +234,7 @@
         "processor": "AMD Ryzen 5",
         "ram": 32,
         "storage": 256,
-        "price": 3635,
+        "price": 3635.0,
         "description": "Lightweight design perfect for travel.",
         "stars": 4.5,
         "stock": 43
@@ -246,7 +246,7 @@
         "processor": "Intel Core i7",
         "ram": 8,
         "storage": 256,
-        "price": 9329,
+        "price": 9329.0,
         "description": "Equipped with the latest generation processor.",
         "stars": 4.0,
         "stock": 13
@@ -258,7 +258,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 8,
         "storage": 1024,
-        "price": 3739,
+        "price": 3739.0,
         "description": "A sleek design with a vibrant display.",
         "stars": 4.5,
         "stock": 43
@@ -270,7 +270,7 @@
         "processor": "Intel Core i5",
         "ram": 32,
         "storage": 1024,
-        "price": 7138,
+        "price": 7138.0,
         "description": "Quiet operation and reliable performance.",
         "stars": 5.0,
         "stock": 63
@@ -282,7 +282,7 @@
         "processor": "Intel Core i3",
         "ram": 32,
         "storage": 1024,
-        "price": 5742,
+        "price": 5742.0,
         "description": "Suitable for gaming and multitasking.",
         "stars": 5.0,
         "stock": 42
@@ -294,7 +294,7 @@
         "processor": "AMD Ryzen 5",
         "ram": 8,
         "storage": 2048,
-        "price": 3255,
+        "price": 3255.0,
         "description": "High performance laptop with excellent battery life.",
         "stars": 3.0,
         "stock": 4
@@ -306,7 +306,7 @@
         "processor": "Intel Core i9",
         "ram": 32,
         "storage": 512,
-        "price": 6381,
+        "price": 6381.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 5.0,
         "stock": 45
@@ -318,7 +318,7 @@
         "processor": "Intel Core i7",
         "ram": 8,
         "storage": 256,
-        "price": 4693,
+        "price": 4693.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 4.0,
         "stock": 25
@@ -330,7 +330,7 @@
         "processor": "Intel Core i9",
         "ram": 16,
         "storage": 1024,
-        "price": 1614,
+        "price": 1614.0,
         "description": "Ideal for professionals and students alike.",
         "stars": 5.0,
         "stock": 14
@@ -342,7 +342,7 @@
         "processor": "AMD Ryzen 7",
         "ram": 8,
         "storage": 1024,
-        "price": 4489,
+        "price": 4489.0,
         "description": "High performance laptop with excellent battery life.",
         "stars": 3.0,
         "stock": 46
@@ -354,7 +354,7 @@
         "processor": "Intel Core i3",
         "ram": 16,
         "storage": 1024,
-        "price": 5799,
+        "price": 5799.0,
         "description": "Suitable for gaming and multitasking.",
         "stars": 3.5,
         "stock": 29
@@ -366,7 +366,7 @@
         "processor": "Intel Core i7",
         "ram": 8,
         "storage": 2048,
-        "price": 4639,
+        "price": 4639.0,
         "description": "Suitable for gaming and multitasking.",
         "stars": 4.5,
         "stock": 86
@@ -378,7 +378,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 8,
         "storage": 1024,
-        "price": 4786,
+        "price": 4786.0,
         "description": "Equipped with the latest generation processor.",
         "stars": 4.5,
         "stock": 29
@@ -390,7 +390,7 @@
         "processor": "Intel Core i7",
         "ram": 16,
         "storage": 1024,
-        "price": 2628,
+        "price": 2628.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 2.5,
         "stock": 91
@@ -402,7 +402,7 @@
         "processor": "Intel Core i7",
         "ram": 16,
         "storage": 512,
-        "price": 3281,
+        "price": 3281.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 4.0,
         "stock": 4
@@ -414,7 +414,7 @@
         "processor": "Intel Core i7",
         "ram": 16,
         "storage": 512,
-        "price": 2120,
+        "price": 2120.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 1.0,
         "stock": 75
@@ -426,7 +426,7 @@
         "processor": "AMD Ryzen 5",
         "ram": 64,
         "storage": 1024,
-        "price": 5383,
+        "price": 5383.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 4.0,
         "stock": 27
@@ -438,7 +438,7 @@
         "processor": "Intel Core i5",
         "ram": 32,
         "storage": 512,
-        "price": 8002,
+        "price": 8002.0,
         "description": "Quiet operation and reliable performance.",
         "stars": 5.0,
         "stock": 85
@@ -450,7 +450,7 @@
         "processor": "Intel Core i9",
         "ram": 64,
         "storage": 1024,
-        "price": 9097,
+        "price": 9097.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 5.0,
         "stock": 16
@@ -462,7 +462,7 @@
         "processor": "Intel Core i5",
         "ram": 16,
         "storage": 2048,
-        "price": 6583,
+        "price": 6583.0,
         "description": "Lightweight design perfect for travel.",
         "stars": 2.5,
         "stock": 77
@@ -474,7 +474,7 @@
         "processor": "Intel Core i9",
         "ram": 8,
         "storage": 256,
-        "price": 2674,
+        "price": 2674.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 3.0,
         "stock": 14
@@ -486,7 +486,7 @@
         "processor": "AMD Ryzen 9",
         "ram": 64,
         "storage": 512,
-        "price": 6247,
+        "price": 6247.0,
         "description": "Quiet operation and reliable performance.",
         "stars": 1.0,
         "stock": 82
@@ -498,7 +498,7 @@
         "processor": "Intel Core i5",
         "ram": 16,
         "storage": 1024,
-        "price": 6124,
+        "price": 6124.0,
         "description": "Lightweight design perfect for travel.",
         "stars": 4.5,
         "stock": 57
@@ -510,7 +510,7 @@
         "processor": "Intel Core i9",
         "ram": 64,
         "storage": 2048,
-        "price": 2777,
+        "price": 2777.0,
         "description": "Lightweight design perfect for travel.",
         "stars": 5.0,
         "stock": 62
@@ -522,7 +522,7 @@
         "processor": "AMD Ryzen 5",
         "ram": 16,
         "storage": 1024,
-        "price": 5865,
+        "price": 5865.0,
         "description": "Suitable for gaming and multitasking.",
         "stars": 4.0,
         "stock": 64
@@ -534,7 +534,7 @@
         "processor": "Intel Core i3",
         "ram": 64,
         "storage": 1024,
-        "price": 3897,
+        "price": 3897.0,
         "description": "A sleek design with a vibrant display.",
         "stars": 4.5,
         "stock": 32
@@ -546,7 +546,7 @@
         "processor": "AMD Ryzen 7",
         "ram": 8,
         "storage": 1024,
-        "price": 7215,
+        "price": 7215.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 4.0,
         "stock": 99
@@ -558,7 +558,7 @@
         "processor": "AMD Ryzen 7",
         "ram": 64,
         "storage": 2048,
-        "price": 6682,
+        "price": 6682.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 3.5,
         "stock": 93
@@ -570,7 +570,7 @@
         "processor": "Intel Core i5",
         "ram": 8,
         "storage": 1024,
-        "price": 1060,
+        "price": 1060.0,
         "description": "Stylish and functional with a backlit keyboard.",
         "stars": 5.0,
         "stock": 57
@@ -582,7 +582,7 @@
         "processor": "Intel Core i9",
         "ram": 8,
         "storage": 2048,
-        "price": 6793,
+        "price": 6793.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 4.0,
         "stock": 26
@@ -594,7 +594,7 @@
         "processor": "Intel Core i3",
         "ram": 16,
         "storage": 1024,
-        "price": 2583,
+        "price": 2583.0,
         "description": "Offers great value for money with powerful specs.",
         "stars": 2.5,
         "stock": 26

@@ -1,36 +1,23 @@
-import json
-from typing import List, Dict, Any
+from typing import List, Optional
+from app.models.computer import Computer
+from app.repositories.computer_repository import ComputerRepository
+
 
 class ComputerService:
-    JSON_FILE_PATH = 'app/data/computers.json'
+    def __init__(self, repository: ComputerRepository):
+        self.repository = repository
 
-    @classmethod
-    def read_computers(cls) -> List[Dict[str, Any]]:
-        with open(cls.JSON_FILE_PATH, 'r') as file:
-            return json.load(file)
+    def get_computers(self) -> List[Computer]:
+        return self.repository.read_computers()
 
-    @classmethod
-    def write_computers(cls, computers: List[Dict[str, Any]]) -> None:
-        with open(cls.JSON_FILE_PATH, 'w') as file:
-            json.dump(computers, file, indent=4)
+    def get_computer_by_id(self, computer_id: int) -> Optional[Computer]:
+        return self.repository.get_computer_by_id(computer_id)
 
-    @classmethod
-    def add_computer(cls, computer: Dict[str, Any]) -> None:
-        computers = cls.read_computers()
-        computers.append(computer)
-        cls.write_computers(computers)
+    def add_computer(self, computer: Computer) -> None:
+        self.repository.add_computer(computer)
 
-    @classmethod
-    def update_computer(cls, computer_id: int, updated_data: Dict[str, Any]) -> None:
-        computers = cls.read_computers()
-        for computer in computers:
-            if computer['id'] == computer_id:
-                computer.update(updated_data)
-                break
-        cls.write_computers(computers)
+    def update_computer(self, computer_id: int, updated_computer: Computer) -> None:
+        self.repository.update_computer(computer_id, updated_computer)
 
-    @classmethod
-    def delete_computer(cls, computer_id: int) -> None:
-        computers = cls.read_computers()
-        computers = [computer for computer in computers if computer['id'] != computer_id]
-        cls.write_computers(computers)
+    def delete_computer(self, computer_id: int) -> None:
+        self.repository.delete_computer(computer_id)
