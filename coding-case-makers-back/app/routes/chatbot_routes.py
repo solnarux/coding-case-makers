@@ -13,8 +13,19 @@ def get_chatbot_service(computer_service: ComputerService = Depends(get_computer
 
 @router.post("/chatbot")
 async def chatbot(chat_request: ChatRequest, service: ChatbotService = Depends(get_chatbot_service)):
+    """Answer the question using a lot of data and a modified prompt. It is slower."""
     try:
         answer = service.get_computer_info(chat_request.question)
+        return {"answer": answer}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/chatbot-rag")
+async def chatbot_rag(chat_request: ChatRequest, service: ChatbotService = Depends(get_chatbot_service)):
+    """Answer the question using the top 5 data, with a RAG and embeddings which makes it faster"""
+    try:
+        answer = service.get_computer_info_RAG(chat_request.question)
         return {"answer": answer}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

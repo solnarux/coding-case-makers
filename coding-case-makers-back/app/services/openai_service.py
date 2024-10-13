@@ -1,4 +1,6 @@
 import os
+from typing import List
+
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -25,3 +27,11 @@ class OpenAIService:
             ]
         )
         return response.choices[0].message.content
+
+    @staticmethod
+    def embed_text(text: str) -> list[float]:
+        response = OpenAIService.client.embeddings.create(
+            input=text,
+            model="text-embedding-3-small"
+        )
+        return response.data[0].embedding
