@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
 import { LockIcon, MailIcon } from 'lucide-react'
+import Link from 'next/link'
 
 export default function LoginPage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -51,7 +52,7 @@ export default function LoginPage() {
             <Button type="submit" className="w-full">Sign In</Button>
             <div className="text-sm text-center text-gray-500">
               Don't have an account? 
-              <a href="#" className="text-blue-600 hover:underline ml-1">Sign up</a>
+              <Link href="/register" replace className="text-blue-600 hover:underline ml-1">Sign up</Link>
             </div>
           </CardFooter>
         </form>
