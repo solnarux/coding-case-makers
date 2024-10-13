@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Computer(BaseModel):
+class Product(BaseModel):
     id: int
     brand: str
     model: str
@@ -12,3 +12,4 @@ class Computer(BaseModel):
     description: str
     stars: float
     stock: int
+    category: str

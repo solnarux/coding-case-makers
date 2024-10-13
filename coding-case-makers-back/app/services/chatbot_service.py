@@ -1,6 +1,6 @@
-from app.services.computer_service import ComputerService
+from app.services.product_service import ProductService
 from app.services.openai_service import OpenAIService
-from app.models.computer import Computer
+from app.models.product import Product
 from typing import List
 
 from sklearn.metrics.pairwise import cosine_similarity
@@ -8,11 +8,11 @@ import numpy as np
 
 
 class ChatbotService:
-    def __init__(self, computer_service: ComputerService):
+    def __init__(self, computer_service: ProductService):
         self.computer_service = computer_service
 
     def get_computer_info(self, query: str) -> str:
-        computers: List[Computer] = self.computer_service.get_computers()
+        computers: List[Product] = self.computer_service.get_computers()
         normalized_query = query.lower()
 
         relevant_info = [
@@ -44,7 +44,7 @@ class ChatbotService:
         return "No relevant computer information found. Please ask another question about computers."
 
     def get_computer_info_RAG(self, query: str) -> str:
-        computers: List[Computer] = self.computer_service.get_computers()
+        computers: List[Product] = self.computer_service.get_computers()
         normalized_query = query.lower()
 
         info_embeddings = []

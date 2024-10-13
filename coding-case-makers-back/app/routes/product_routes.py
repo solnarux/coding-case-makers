@@ -1,0 +1,80 @@
+from typing import List, Optional
+from fastapi import APIRouter, Depends, HTTPException
+from app.models.product import Product
+from app.services.product_service import ProductService
+from app.dependencies import get_product_service
+
+
+router = APIRouter()
+
+
+@router.get("/products", response_model=List[Product])
+async def get_products(
+        brand: Optional[str] = None,
+        model: Optional[str] = None,
+        processor: Optional[str] = None,
+        storage: Optional[int] = None,
+        ram: Optional[int] = None,
+        stars: Optional[float] = None,
+        stock: Optional[int] = None,
+        min_price: Optional[float] = None,
+        max_price: Optional[float] = None,
+        category: Optional[str] = None,  # Added category filter
+        service: ProductService = Depends(get_product_service)  # Updated dependency
+):
+    """Get a list of all products, optionally filtered by brand, RAM, stars, stock, price ranges, and category."""
+    filters = {}
+    if brand:
+        filters['brand'] = brand
+    if model:
+        filters['model'] = model
+    if storage:
+        filters['storage'] = storage
+    if processor:
+        filters['processor'] = processor
+    if ram:
+        filters['ram'] = ram
+    if stars:
+        filters['stars'] = stars
+    if stock:
+        filters['stock'] = stock
+    if min_price is not None:
+        filters['min_price'] = min_price
+    if max_price is not None:
+        filters['max_price'] = max_price
+    if category:  # Check for category filter
+        filters['category'] = category
+
+    filtered_products = service.get_products_by_attributes(**filters)
+    return filtered_products
+
+
+@router.get("/products/{product_id}", response_model=Product)
+async def get_product(product_id: int, service: ProductService = Depends(get_product_service)):
+    """Get a specific product by ID."""
+    product = service.get_product_by_id(product_id)
+    if product is None:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return product
+
+
+@router.post("/products", response_model=Product)
+async def add_product(product: Product, service: ProductService = Depends(get_product_service)):
+    """Add a new product."""
+    service.add_product(product)
+    return product
+
+
+@router.put("/products/{product_id}", response_model=Product)
+async def update_product(product_id: int, updated_product: Product,
+                         service: ProductService = Depends(get_product_service)):
+    """Update an existing product."""
+    service.update_product(product_id, updated_product)
+    return updated_product
+
+
+@router.delete("/products/{product_id}")
+async def delete_product(product_id: int, service: ProductService = Depends(get_product_service)):
+    """Delete a product by ID."""
+    service.delete_product(product_id)
+    return {"detail": "Product deleted successfully"}
