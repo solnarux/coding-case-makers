@@ -1,20 +1,27 @@
-# app/services/openai_service.py
-
 import os
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+ORGANIZATION_ID = os.getenv("ORGANIZATION_ID")
+PROJECT_ID = os.getenv("PROJECT_ID")
+
 
 class OpenAIService:
+    client = OpenAI(
+        organization=ORGANIZATION_ID,
+        api_key=OPENAI_API_KEY,
+        project=PROJECT_ID
+    )
+
     @staticmethod
     def generate_response(prompt: str) -> str:
-        response = openai.ChatCompletion.create(
+        response = OpenAIService.client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "user", "content": prompt}
             ]
         )
-        return response['choices'][0]['message']['content']
+        return response.choices[0].message.content

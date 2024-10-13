@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class Computer(BaseModel):
     id: int
     brand: str
@@ -11,5 +12,3 @@ class Computer(BaseModel):
     description: str
     stars: float
     stock: int
-
-

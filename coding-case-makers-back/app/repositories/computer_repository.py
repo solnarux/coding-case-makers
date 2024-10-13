@@ -1,6 +1,7 @@
 from typing import List, Optional
 from app.models.computer import Computer
 
+
 class ComputerRepository:
     def read_computers(self) -> List[Computer]:
         """Read all computers from storage."""

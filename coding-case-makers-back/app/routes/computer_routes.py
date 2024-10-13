@@ -1,19 +1,10 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
-#from sqlalchemy.orm import Session
 from app.models.computer import Computer
 from app.services.computer_service import ComputerService
-from app.repositories.json_computer_repository import JSONComputerRepository
-# from app.repositories.db_computer_repository import DBComputerRepository
-#from app.database import get_db
+from app.dependencies import get_computer_service
 
 router = APIRouter()
-
-
-def get_computer_service() -> ComputerService:
-    repository = JSONComputerRepository()
-    # repository = DBComputerRepository(get_db())
-    return ComputerService(repository)
 
 
 @router.get("/computers", response_model=List[Computer])
@@ -29,6 +20,7 @@ async def get_computer(computer_id: int, service: ComputerService = Depends(get_
     if computer is None:
         raise HTTPException(status_code=404, detail="Computer not found")
     return computer
+
 
 @router.post("/computers", response_model=Computer)
 async def add_computer(computer: Computer, service: ComputerService = Depends(get_computer_service)):
