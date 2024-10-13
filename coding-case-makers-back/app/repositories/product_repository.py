@@ -1,4 +1,7 @@
-from typing import List, Optional
+from typing import List, Optional, Any
+
+from sqlalchemy import Row
+
 from app.models.product import Product
 
 
@@ -29,4 +32,8 @@ class ProductRepository:
 
     def get_products_by_attributes(self, attributes) -> List[Product]:
         """Retrieve products filtered by attributes."""
+        raise NotImplementedError
+
+    def get_products_by_brand(self) -> list[Row[tuple[Any, Any, Any]]]:
+        """Retrieve products by brand"""
         raise NotImplementedError

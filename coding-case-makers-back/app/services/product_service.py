@@ -1,4 +1,4 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Dict
 from app.models.product import Product as ProductModel
 from app.schemas.product import ProductBase
 from app.repositories.product_repository import ProductRepository
@@ -44,6 +44,11 @@ class ProductService:
         out_of_stock_count = sum(100 - stock for _, stock in stock_info)
         return total_stock, out_of_stock_count
 
+    def get_products_by_brand(self) -> Dict[str, Tuple[int, int]]:
+        """Get total products and total stock grouped by brand."""
+        brand_data = self.repository.get_products_by_brand()
+        return {brand: (count, stock) for brand, count, stock in brand_data}
+
     def _convert_to_schema(self, product: ProductModel) -> ProductBase:
         """Convert SQLAlchemy Product model to Pydantic ProductBase schema."""
         return ProductBase.from_orm(product)
@@ -51,3 +56,4 @@ class ProductService:
     def _convert_to_model(self, product: ProductBase) -> ProductModel:
         """Convert Pydantic ProductBase schema to SQLAlchemy Product model."""
         return ProductModel(**product.dict())
+

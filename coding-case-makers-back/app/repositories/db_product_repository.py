@@ -55,6 +55,18 @@ class DBProductRepository(ProductRepository):
             self.db_session.delete(product)
             self.db_session.commit()
 
+    def get_products_by_brand(self) -> list[Row[tuple[Any, Any, Any]]]:
+        """Return a list of tuples containing brand name, total count, and total stock by brand."""
+        return (
+            self.db_session.query(
+                Product.brand,
+                func.count(Product.id).label('total_count'),
+                func.sum(Product.stock).label('total_stock')
+            )
+            .group_by(Product.brand)
+            .all()
+        )
+
     def count_products(self) -> int:
         """Return the total number of products in the database."""
         return self.db_session.query(func.count(Product.id)).scalar()
