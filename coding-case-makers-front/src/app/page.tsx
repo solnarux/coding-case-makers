@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Chatbot from "./components/ChatBot"
 import { Button } from "./components/ui/button"
-import { LogIn, MessageCircle, ShoppingCart, Trash2 } from "lucide-react"
+import { CircleGauge, LogIn, MessageCircle, ShoppingCart, Trash2 } from "lucide-react"
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "./components/ui/sheet"
 import { Badge } from "./components/ui/badge"
 import Link from "next/link"
@@ -12,7 +12,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 
 interface Product {
   id: number;
-  category: string;
   brand: string;
   model: string;
   processor: string;
@@ -22,6 +21,7 @@ interface Product {
   description: string;
   stars: number;
   stock: number;
+  category: string;
 }
 
 interface CartItem extends Product {
@@ -41,7 +41,7 @@ export default function Home() {
 
     const fetchProducts = async () => {
 
-      const response = await fetch('http://127.0.0.1:8000/computers', {
+      const response = await fetch('http://127.0.0.1:8000/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -162,6 +162,11 @@ export default function Home() {
                 )}
               </SheetContent>
             </Sheet>
+            <Link href="/dashboard">
+              <Button variant="outline" size="icon">
+                <CircleGauge className='h-5 w-5'/>
+              </Button>
+            </Link>
             <Link href="/login">
               <Button variant="outline" size="icon">
                 <LogIn className='h-5 w-5'/>

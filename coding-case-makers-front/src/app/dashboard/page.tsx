@@ -1,221 +1,194 @@
 'use client'
-import React from 'react'
+
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../components/ui/chart"
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts'
-import { ArrowUpIcon, ArrowDownIcon, Package2Icon, TruckIcon, UsersIcon, DollarSignIcon } from 'lucide-react'
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../components/ui/chart"
+import { Loader2 } from "lucide-react"
 
-// Sample data for charts
-const stockData = [
-  { category: "T-Shirts", inStock: 120, lowStock: 30, outOfStock: 10 },
-  { category: "Jeans", inStock: 80, lowStock: 20, outOfStock: 5 },
-  { category: "Shoes", inStock: 100, lowStock: 25, outOfStock: 15 },
-  { category: "Accessories", inStock: 200, lowStock: 50, outOfStock: 20 },
-]
-
-const salesData = [
-  { month: "Jan", sales: 1000 },
-  { month: "Feb", sales: 1500 },
-  { month: "Mar", sales: 1200 },
-  { month: "Apr", sales: 1800 },
-  { month: "May", sales: 2000 },
-  { month: "Jun", sales: 2400 },
-]
-
-const categoryDistribution = [
-  { name: "T-Shirts", value: 35 },
-  { name: "Jeans", value: 25 },
-  { name: "Shoes", value: 20 },
-  { name: "Accessories", value: 20 },
-]
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
+interface DashboardData {
+  total_products: number;
+  total_stock: number;
+  out_of_stock_count: number;
+  products_by_brand: {
+    [key: string]: [number, number];
+  };
+}
 
 export default function AdminDashboard() {
-  return (
-    <div className="flex-1 space-y-4 p-8 pt-6">
-      <div className="flex items-center justify-between space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+  const [data, setData] = useState<DashboardData | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/dashboard')
+        if (!response.ok) {
+          throw new Error('Failed to fetch dashboard data')
+        }
+        const jsonData = await response.json()
+        setData(jsonData)
+      } catch (err) {
+        setError('An error occurred while fetching the dashboard data.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchDashboardData()
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader2 className="h-8 w-8 animate-spin" />
       </div>
-      <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-        </TabsList>
-        <TabsContent value="overview" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Total Revenue
-                </CardTitle>
-                <DollarSignIcon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">$45,231.89</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Total Products
-                </CardTitle>
-                <Package2Icon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">2350</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Orders</CardTitle>
-                <TruckIcon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">12,234</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Active Users
-                </CardTitle>
-                <UsersIcon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">573</div>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
-              <CardHeader>
-                <CardTitle>Stock Overview</CardTitle>
-              </CardHeader>
-              <CardContent className="pl-2">
-                <ChartContainer config={{
-                  inStock: {
-                    label: "In Stock",
-                    color: "hsl(var(--chart-1))",
-                  },
-                  lowStock: {
-                    label: "Low Stock",
-                    color: "hsl(var(--chart-2))",
-                  },
-                  outOfStock: {
-                    label: "Out of Stock",
-                    color: "hsl(var(--chart-3))",
-                  },
-                }} className="h-[300px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={stockData}>
-                      <XAxis dataKey="category" />
-                      <YAxis />
-                      <Tooltip content={<ChartTooltipContent />} />
-                      <Legend />
-                      <Bar dataKey="inStock" stackId="a" fill="var(--color-inStock)" />
-                      <Bar dataKey="lowStock" stackId="a" fill="var(--color-lowStock)" />
-                      <Bar dataKey="outOfStock" stackId="a" fill="var(--color-outOfStock)" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-            <Card className="col-span-3">
-              <CardHeader>
-                <CardTitle>Sales Overview</CardTitle>
-                <CardDescription>
-                  Monthly sales performance
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pl-2">
-                <ChartContainer config={{
-                  sales: {
-                    label: "Sales",
-                    color: "hsl(var(--chart-1))",
-                  },
-                }} className="h-[300px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={salesData}>
-                      <XAxis dataKey="month" />
-                      <YAxis />
-                      <Tooltip content={<ChartTooltipContent />} />
-                      <Bar dataKey="sales" fill="var(--color-sales)" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
-              <CardHeader>
-                <CardTitle>Recent Sales</CardTitle>
-                <CardDescription>
-                  You made 265 sales this month.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-8">
-                  {[
-                    { name: "Olivia Martin", email: "olivia.martin@email.com", amount: "+$1,999.00" },
-                    { name: "Jackson Lee", email: "jackson.lee@email.com", amount: "+$39.00" },
-                    { name: "Isabella Nguyen", email: "isabella.nguyen@email.com", amount: "+$299.00" },
-                    { name: "William Kim", email: "will@email.com", amount: "+$99.00" },
-                    { name: "Sofia Davis", email: "sofia.davis@email.com", amount: "+$39.00" },
-                  ].map((sale, index) => (
-                    <div key={index} className="flex items-center">
-                      <div className="space-y-1">
-                        <p className="text-sm font-medium leading-none">{sale.name}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {sale.email}
-                        </p>
-                      </div>
-                      <div className="ml-auto font-medium">{sale.amount}</div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="col-span-3">
-              <CardHeader>
-                <CardTitle>Product Category Distribution</CardTitle>
-                <CardDescription>
-                  Breakdown of product categories
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pl-2">
-                <ChartContainer config={{
-                  category: {
-                    label: "Category",
-                    color: "hsl(var(--chart-1))",
-                  },
-                }} className="h-[300px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie
-                        data={categoryDistribution}
-                        cx="50%"
-                        cy="50%"
-                        labelLine={false}
-                        outerRadius={80}
-                        fill="#8884d8"
-                        dataKey="value"
-                      >
-                        {categoryDistribution.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip content={<ChartTooltipContent />} />
-                      <Legend />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-      </Tabs>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-red-500">{error}</p>
+      </div>
+    )
+  }
+
+  if (!data) {
+    return null
+  }
+
+  const brandData = Object.entries(data.products_by_brand).map(([brand, [quantity, stock]]) => ({
+    brand,
+    quantity,
+    stock,
+  }))
+
+  const stockStatus = [
+    { name: 'In Stock', value: data.total_stock },
+    { name: 'Out of Stock', value: data.out_of_stock_count },
+  ]
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#A4DE6C', '#D0ED57', '#FFA07A']
+
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>Total Products</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-4xl font-bold">{data.total_products}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Total Stock</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-4xl font-bold">{data.total_stock}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Out of Stock</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-4xl font-bold">{data.out_of_stock_count}</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>Products by Brand</CardTitle>
+            <CardDescription>Number of products for each brand</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer
+              config={{
+                quantity: {
+                  label: "Quantity",
+                  color: "hsl(var(--chart-1))",
+                },
+              }}
+              className="h-[400px]"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={brandData}>
+                  <XAxis dataKey="brand" />
+                  <YAxis />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Legend />
+                  <Bar dataKey="quantity" fill="var(--color-quantity)" name="Quantity" />
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Stock by Brand</CardTitle>
+            <CardDescription>Total stock for each brand</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer
+              config={{
+                stock: {
+                  label: "Stock",
+                  color: "hsl(var(--chart-2))",
+                },
+              }}
+              className="h-[400px]"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={brandData}>
+                  <XAxis dataKey="brand" />
+                  <YAxis />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Legend />
+                  <Bar dataKey="stock" fill="var(--color-stock)" name="Stock" />
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Stock Status</CardTitle>
+            <CardDescription>In Stock vs Out of Stock</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="h-[400px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={stockStatus}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={150}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  >
+                    {stockStatus.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }
