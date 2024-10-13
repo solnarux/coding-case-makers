@@ -14,9 +14,9 @@ class ChatbotService:
 
         relevant_info = [
             computer for computer in computers
-            if (normalized_query in computer.brand.lower() or
-                normalized_query in computer.model.lower() or
-                normalized_query in computer.description.lower())
+            if (computer.brand.lower() in normalized_query or
+                computer.model.lower() in normalized_query or
+                computer.description.lower() in normalized_query)
         ]
 
         if relevant_info:
@@ -33,7 +33,6 @@ class ChatbotService:
                 f"Based on the following information about computers:\n{info_summary}\n\n"
                 f"Please answer the question: {query}"
             )
-        else:
-            prompt = "No relevant computer information found. Please ask another question about computers."
 
-        return OpenAIService.generate_response(prompt)
+            return OpenAIService.generate_response(prompt)
+        return "No relevant computer information found. Please ask another question about computers."
