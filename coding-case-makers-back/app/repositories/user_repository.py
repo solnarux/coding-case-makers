@@ -1,11 +1,10 @@
 from typing import List, Optional, Type
 from sqlalchemy import and_
 from sqlalchemy.orm import Session
+from app.models.user import User
 
-from app.models.user import User  # Make sure to adjust the import based on your project structure
 
-
-class UserRepository():
+class UserRepository:
     def __init__(self, db_session: Session):
         self.db_session = db_session
 
