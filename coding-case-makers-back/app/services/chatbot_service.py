@@ -1,5 +1,3 @@
-# app/services/chatbot_service.py
-
 from app.services.computer_service import ComputerService
 from app.services.openai_service import OpenAIService
 
@@ -13,7 +11,6 @@ class ChatbotService:
             if query.lower() in computer['name'].lower() or query.lower() in computer['description'].lower():
                 relevant_info.append(computer)
 
-        # Create a prompt for OpenAI using the relevant information
         if relevant_info:
             info_summary = "\n".join(
                 [f"Name: {comp['name']}, Description: {comp['description']}" for comp in relevant_info]
@@ -22,6 +19,4 @@ class ChatbotService:
         else:
             prompt = f"No relevant computer information found. Please ask another question about computers."
 
-        # Generate a response using OpenAI
-        response = OpenAIService.generate_response(prompt)
-        return response
+        return OpenAIService.generate_response(prompt)

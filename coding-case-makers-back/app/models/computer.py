@@ -8,3 +8,8 @@ class Computer(BaseModel):
     ram: int
     storage: int
     price: float
+    description: str
+    stars: float
+    stock: int
+
+
