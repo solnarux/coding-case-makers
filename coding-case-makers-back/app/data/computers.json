@@ -1,0 +1,452 @@
+[
+    {
+        "id": 11,
+        "brand": "Acer",
+        "model": "Acer Surface Laptop 2021",
+        "processor": "Intel Core i3",
+        "ram": 204,
+        "storage": 171136,
+        "price": 3282
+    },
+    {
+        "id": 233,
+        "brand": "HP",
+        "model": "HP Inspiron 2022",
+        "processor": "Intel Core i9",
+        "ram": 84,
+        "storage": 196736,
+        "price": 1339
+    },
+    {
+        "id": 725,
+        "brand": "Acer",
+        "model": "Acer Inspiron 2020",
+        "processor": "AMD Ryzen 9",
+        "ram": 24,
+        "storage": 226816,
+        "price": 2050
+    },
+    {
+        "id": 512,
+        "brand": "Acer",
+        "model": "Acer Envy 2020",
+        "processor": "Intel Core i5",
+        "ram": 248,
+        "storage": 48896,
+        "price": 9494
+    },
+    {
+        "id": 519,
+        "brand": "Asus",
+        "model": "Asus Surface Laptop 2023",
+        "processor": "Intel Core i3",
+        "ram": 212,
+        "storage": 115968,
+        "price": 4937
+    },
+    {
+        "id": 293,
+        "brand": "Microsoft",
+        "model": "Microsoft Surface Laptop 2020",
+        "processor": "AMD Ryzen 7",
+        "ram": 24,
+        "storage": 34560,
+        "price": 8070
+    },
+    {
+        "id": 693,
+        "brand": "Microsoft",
+        "model": "Microsoft MacBook Pro 2021",
+        "processor": "Intel Core i3",
+        "ram": 68,
+        "storage": 167552,
+        "price": 9499
+    },
+    {
+        "id": 455,
+        "brand": "Dell",
+        "model": "Dell ZenBook 2023",
+        "processor": "Intel Core i5",
+        "ram": 168,
+        "storage": 103040,
+        "price": 1229
+    },
+    {
+        "id": 324,
+        "brand": "Microsoft",
+        "model": "Microsoft Surface Laptop 2023",
+        "processor": "Intel Core i3",
+        "ram": 32,
+        "storage": 64384,
+        "price": 8853
+    },
+    {
+        "id": 128,
+        "brand": "HP",
+        "model": "HP Inspiron 2020",
+        "processor": "AMD Ryzen 7",
+        "ram": 64,
+        "storage": 85248,
+        "price": 9750
+    },
+    {
+        "id": 913,
+        "brand": "Microsoft",
+        "model": "Microsoft Envy 2021",
+        "processor": "Intel Core i3",
+        "ram": 24,
+        "storage": 252288,
+        "price": 9028
+    },
+    {
+        "id": 101,
+        "brand": "Razer",
+        "model": "Razer Predator 2021",
+        "processor": "Intel Core i7",
+        "ram": 92,
+        "storage": 87296,
+        "price": 3459
+    },
+    {
+        "id": 239,
+        "brand": "Asus",
+        "model": "Asus Surface Laptop 2020",
+        "processor": "AMD Ryzen 9",
+        "ram": 180,
+        "storage": 209024,
+        "price": 7587
+    },
+    {
+        "id": 994,
+        "brand": "Lenovo",
+        "model": "Lenovo ZenBook 2022",
+        "processor": "AMD Ryzen 5",
+        "ram": 180,
+        "storage": 54272,
+        "price": 6638
+    },
+    {
+        "id": 923,
+        "brand": "Razer",
+        "model": "Razer ZenBook 2020",
+        "processor": "Intel Core i3",
+        "ram": 20,
+        "storage": 174464,
+        "price": 3087
+    },
+    {
+        "id": 633,
+        "brand": "HP",
+        "model": "HP Envy 2021",
+        "processor": "AMD Ryzen 5",
+        "ram": 96,
+        "storage": 133504,
+        "price": 7445
+    },
+    {
+        "id": 192,
+        "brand": "Dell",
+        "model": "Dell Blade 2022",
+        "processor": "AMD Ryzen 9",
+        "ram": 164,
+        "storage": 199424,
+        "price": 5487
+    },
+    {
+        "id": 125,
+        "brand": "Dell",
+        "model": "Dell Pavilion 2020",
+        "processor": "Intel Core i9",
+        "ram": 76,
+        "storage": 255360,
+        "price": 7314
+    },
+    {
+        "id": 675,
+        "brand": "Asus",
+        "model": "Asus Predator 2020",
+        "processor": "Intel Core i7",
+        "ram": 228,
+        "storage": 73088,
+        "price": 7572
+    },
+    {
+        "id": 687,
+        "brand": "Microsoft",
+        "model": "Microsoft ThinkPad 2021",
+        "processor": "Intel Core i5",
+        "ram": 248,
+        "storage": 49024,
+        "price": 4311
+    },
+    {
+        "id": 935,
+        "brand": "Dell",
+        "model": "Dell ThinkPad 2020",
+        "processor": "Intel Core i3",
+        "ram": 40,
+        "storage": 187264,
+        "price": 7330
+    },
+    {
+        "id": 469,
+        "brand": "Dell",
+        "model": "Dell MacBook Pro 2023",
+        "processor": "Intel Core i3",
+        "ram": 180,
+        "storage": 125312,
+        "price": 3138
+    },
+    {
+        "id": 718,
+        "brand": "Dell",
+        "model": "Dell Blade 2022",
+        "processor": "Intel Core i5",
+        "ram": 148,
+        "storage": 162560,
+        "price": 6393
+    },
+    {
+        "id": 613,
+        "brand": "Dell",
+        "model": "Dell Surface Laptop 2020",
+        "processor": "Intel Core i9",
+        "ram": 204,
+        "storage": 144512,
+        "price": 1251
+    },
+    {
+        "id": 702,
+        "brand": "Apple",
+        "model": "Apple Aspire 2021",
+        "processor": "Intel Core i3",
+        "ram": 128,
+        "storage": 48512,
+        "price": 3409
+    },
+    {
+        "id": 420,
+        "brand": "Lenovo",
+        "model": "Lenovo Pavilion 2021",
+        "processor": "Intel Core i3",
+        "ram": 48,
+        "storage": 68480,
+        "price": 9076
+    },
+    {
+        "id": 470,
+        "brand": "Apple",
+        "model": "Apple ThinkPad 2021",
+        "processor": "AMD Ryzen 7",
+        "ram": 240,
+        "storage": 182400,
+        "price": 9940
+    },
+    {
+        "id": 237,
+        "brand": "Apple",
+        "model": "Apple Inspiron 2020",
+        "processor": "Intel Core i5",
+        "ram": 120,
+        "storage": 244608,
+        "price": 9840
+    },
+    {
+        "id": 970,
+        "brand": "Apple",
+        "model": "Apple Pavilion 2020",
+        "processor": "Intel Core i9",
+        "ram": 116,
+        "storage": 173952,
+        "price": 4719
+    },
+    {
+        "id": 488,
+        "brand": "Razer",
+        "model": "Razer Predator 2021",
+        "processor": "Intel Core i7",
+        "ram": 48,
+        "storage": 242176,
+        "price": 6988
+    },
+    {
+        "id": 962,
+        "brand": "Lenovo",
+        "model": "Lenovo Envy 2023",
+        "processor": "Intel Core i9",
+        "ram": 128,
+        "storage": 113024,
+        "price": 1325
+    },
+    {
+        "id": 672,
+        "brand": "Apple",
+        "model": "Apple Pavilion 2022",
+        "processor": "AMD Ryzen 7",
+        "ram": 56,
+        "storage": 131712,
+        "price": 4933
+    },
+    {
+        "id": 999,
+        "brand": "Apple",
+        "model": "Apple MacBook Pro 2020",
+        "processor": "AMD Ryzen 7",
+        "ram": 60,
+        "storage": 232832,
+        "price": 1849
+    },
+    {
+        "id": 874,
+        "brand": "Acer",
+        "model": "Acer Pavilion 2020",
+        "processor": "AMD Ryzen 5",
+        "ram": 80,
+        "storage": 222080,
+        "price": 2606
+    },
+    {
+        "id": 57,
+        "brand": "HP",
+        "model": "HP Envy 2022",
+        "processor": "Intel Core i5",
+        "ram": 84,
+        "storage": 122496,
+        "price": 7661
+    },
+    {
+        "id": 279,
+        "brand": "Dell",
+        "model": "Dell Surface Laptop 2023",
+        "processor": "AMD Ryzen 5",
+        "ram": 228,
+        "storage": 203136,
+        "price": 3555
+    },
+    {
+        "id": 22,
+        "brand": "HP",
+        "model": "HP MacBook Pro 2023",
+        "processor": "AMD Ryzen 7",
+        "ram": 28,
+        "storage": 176896,
+        "price": 7967
+    },
+    {
+        "id": 943,
+        "brand": "Microsoft",
+        "model": "Microsoft Envy 2020",
+        "processor": "AMD Ryzen 7",
+        "ram": 152,
+        "storage": 188672,
+        "price": 5515
+    },
+    {
+        "id": 175,
+        "brand": "Asus",
+        "model": "Asus ThinkPad 2022",
+        "processor": "Intel Core i3",
+        "ram": 24,
+        "storage": 114560,
+        "price": 3730
+    },
+    {
+        "id": 343,
+        "brand": "Razer",
+        "model": "Razer Surface Laptop 2020",
+        "processor": "AMD Ryzen 7",
+        "ram": 52,
+        "storage": 189824,
+        "price": 5680
+    },
+    {
+        "id": 690,
+        "brand": "Razer",
+        "model": "Razer MacBook Pro 2020",
+        "processor": "Intel Core i7",
+        "ram": 28,
+        "storage": 196608,
+        "price": 3591
+    },
+    {
+        "id": 624,
+        "brand": "Lenovo",
+        "model": "Lenovo Aspire 2020",
+        "processor": "AMD Ryzen 9",
+        "ram": 24,
+        "storage": 186624,
+        "price": 3150
+    },
+    {
+        "id": 748,
+        "brand": "Dell",
+        "model": "Dell Aspire 2023",
+        "processor": "Intel Core i5",
+        "ram": 120,
+        "storage": 151552,
+        "price": 3361
+    },
+    {
+        "id": 359,
+        "brand": "Dell",
+        "model": "Dell Aspire 2023",
+        "processor": "Intel Core i5",
+        "ram": 176,
+        "storage": 157312,
+        "price": 1429
+    },
+    {
+        "id": 925,
+        "brand": "Acer",
+        "model": "Acer Predator 2022",
+        "processor": "AMD Ryzen 5",
+        "ram": 228,
+        "storage": 94080,
+        "price": 8433
+    },
+    {
+        "id": 671,
+        "brand": "Lenovo",
+        "model": "Lenovo Surface Laptop 2021",
+        "processor": "AMD Ryzen 5",
+        "ram": 76,
+        "storage": 178176,
+        "price": 2920
+    },
+    {
+        "id": 505,
+        "brand": "Microsoft",
+        "model": "Microsoft ThinkPad 2023",
+        "processor": "AMD Ryzen 9",
+        "ram": 104,
+        "storage": 203264,
+        "price": 8492
+    },
+    {
+        "id": 875,
+        "brand": "Acer",
+        "model": "Acer Inspiron 2022",
+        "processor": "AMD Ryzen 5",
+        "ram": 160,
+        "storage": 258048,
+        "price": 8300
+    },
+    {
+        "id": 819,
+        "brand": "Lenovo",
+        "model": "Lenovo MacBook Pro 2020",
+        "processor": "AMD Ryzen 9",
+        "ram": 164,
+        "storage": 76928,
+        "price": 6982
+    },
+    {
+        "id": 566,
+        "brand": "Razer",
+        "model": "Razer Predator 2023",
+        "processor": "AMD Ryzen 9",
+        "ram": 168,
+        "storage": 255360,
+        "price": 9093
+    }
+]
