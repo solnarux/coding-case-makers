@@ -1,6 +1,6 @@
-from typing import List, Optional, Type
+from typing import List, Optional, Type, Tuple, Any
 
-from sqlalchemy import and_
+from sqlalchemy import and_, func, Row
 from sqlalchemy.orm import Session
 
 from app.models.product import Product
@@ -11,7 +11,7 @@ class DBProductRepository(ProductRepository):
     def __init__(self, db_session: Session):
         self.db_session = db_session
 
-    def read_products(self, **kwargs) -> list[Type[Product]]:
+    def read_products(self, **kwargs) -> List[Type[Product]]:
         """Read products from the database and filter based on provided attributes."""
         query = self.db_session.query(Product)
 
@@ -54,3 +54,11 @@ class DBProductRepository(ProductRepository):
         if product:
             self.db_session.delete(product)
             self.db_session.commit()
+
+    def count_products(self) -> int:
+        """Return the total number of products in the database."""
+        return self.db_session.query(func.count(Product.id)).scalar()
+
+    def get_stock_info(self) -> list[Row[tuple[Any, Any]]]:
+        """Return a list of tuples containing product ID and current stock."""
+        return self.db_session.query(Product.id, Product.stock).all()

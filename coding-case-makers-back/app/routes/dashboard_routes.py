@@ -1,23 +1,23 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from app.models.user import User
-from app.utils.jwt import get_current_user
+# app/routes/dashboard.py
+
+from fastapi import APIRouter, Depends
+from app.services.product_service import ProductService
+from app.dependencies import get_product_service
 
 router = APIRouter()
 
 
-def admin_required(current_user: User = Depends(get_current_user)):
-    """
-    Dependency to ensure the user has admin privileges.
-    Raises a 403 Forbidden exception if the user is not an admin.
-    """
-    if current_user.role != "admin":
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not enough permissions")
-
-
 @router.get("/dashboard")
-async def dashboard(current_user: User = Depends(admin_required)):
+async def dashboard(service: ProductService = Depends(get_product_service)):
     """
-    Dashboard endpoint accessible only to admin users.
-    Returns a welcome message with the user's name and role.
+    Dashboard endpoint accessible to all users.
+    Returns the total product count and stock metrics.
     """
-    return {"message": f"Welcome to the dashboard, {current_user.name}!", "role": current_user.role}
+    total_products = service.get_product_count()
+    total_stock, out_of_stock_count = service.get_stock_info()
+
+    return {
+        "total_products": total_products,
+        "total_stock": total_stock,
+        "out_of_stock_count": out_of_stock_count,
+    }
