@@ -1,8 +1,6 @@
-# app/main.py
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import chatbot_routes, computer_routes
+from app.routes import chatbot_routes, product_routes
 
 app = FastAPI()
 
@@ -14,7 +12,7 @@ app.add_middleware(
 )
 
 #app.include_router(user_routes.router)
-app.include_router(computer_routes.router)
+app.include_router(product_routes.router)
 app.include_router(chatbot_routes.router)
 
 

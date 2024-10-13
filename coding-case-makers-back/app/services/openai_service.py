@@ -1,14 +1,10 @@
-import os
-from typing import List
-
 from openai import OpenAI
-from dotenv import load_dotenv
 
-load_dotenv()
+from env import env
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-ORGANIZATION_ID = os.getenv("ORGANIZATION_ID")
-PROJECT_ID = os.getenv("PROJECT_ID")
+OPENAI_API_KEY = env['OPENAI_API_KEY']
+ORGANIZATION_ID = env['ORGANIZATION_ID']
+PROJECT_ID = env['PROJECT_ID']
 
 
 class OpenAIService:
